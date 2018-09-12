@@ -6,19 +6,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <TextView
+        android:id="@+id/exerciseName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:text="Pushups"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-thin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="fill_parent"
+        android:layout_height="0.3dip"
+        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
+        android:background="#ffffff"
+        app:layout_constraintTop_toBottomOf="@id/exerciseName"
+        app:layout_constraintBottom_toTopOf="@id/countText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:id="@+id/countText"
-        android:layout_width="4dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="sans-serif-condensed"
+        android:text="36"
+        android:textColor="@color/colorAccent"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/greatJob"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/exerciseName" />
 
     <TextView
         android:id="@+id/greatJob"
@@ -28,7 +57,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:text="Great Job!"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

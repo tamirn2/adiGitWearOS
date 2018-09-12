@@ -4,6 +4,9 @@ class DataStore {
 
     private Workout workout = new Workout();
 
+    public void updateWorkoutTime(String timeStamp){
+        workout.timeStamp = timeStamp;
+    }
     public void addExerciseToWorkout(String exerciseName) {
         workout.workoutSummery.add(new Workout.Exercise(exerciseName, 0));
     }

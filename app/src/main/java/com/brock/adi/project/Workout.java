@@ -23,4 +23,5 @@ public class Workout {
     public Exercise getLastExercise(){
         return workoutSummery.get(workoutSummery.size() - 1);
     }
+
 }

@@ -35,7 +35,7 @@
 
         <activity android:name=".CountingActivity" />
         <activity android:name=".NFCConnectedActivity" />
-        <activity android:name=".WorkoutDoneActivity" />
+        <activity android:name=".MyWearableActivity" />
     </application>
 
 </manifest>

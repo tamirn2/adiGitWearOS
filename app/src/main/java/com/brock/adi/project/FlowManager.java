@@ -2,7 +2,10 @@ package com.brock.adi.project;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
+import android.icu.text.SimpleDateFormat;
 import android.os.CountDownTimer;
+
+import java.util.Date;
 
 public class FlowManager {
 
@@ -20,6 +23,8 @@ public class FlowManager {
     public static final FlowManager instance = new FlowManager();
 
     private FlowManager(){
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+        dataStore.updateWorkoutTime(timeStamp);
         currentState.postValue(State.IDLE);
     }
 

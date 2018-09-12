@@ -6,14 +6,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.wearable.activity.WearableActivity;
 
-public class NFCConnectedActivity extends WearableActivity {
+public class NFCConnectedActivity extends MyWearableActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_idle);
-
-        //listen to live data of string
 
         FlowManager.instance.getCurrentState().observe(this, new Observer<State>() {
             @Override

@@ -7,7 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.wearable.activity.WearableActivity;
 import android.widget.TextView;
 
-public class IdleActivity extends WearableActivity {
+public class IdleActivity extends MyWearableActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
