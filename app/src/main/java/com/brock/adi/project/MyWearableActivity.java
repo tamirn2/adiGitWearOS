@@ -9,25 +9,50 @@ import android.arch.lifecycle.LifecycleOwner;
 
 public class MyWearableActivity extends WearableActivity implements LifecycleOwner {
 
-    private LifecycleRegistry mLifecycleRegistry;
+    private LifecycleRegistry lifecycleRegistry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mLifecycleRegistry = new LifecycleRegistry(this);
-        mLifecycleRegistry.markState(Lifecycle.State.CREATED);
+        lifecycleRegistry = new LifecycleRegistry(this);
+        lifecycleRegistry.markState(Lifecycle.State.INITIALIZED);
+        lifecycleRegistry.markState(Lifecycle.State.CREATED);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        mLifecycleRegistry.markState(Lifecycle.State.STARTED);
+        lifecycleRegistry.markState(Lifecycle.State.STARTED);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        lifecycleRegistry.markState(Lifecycle.State.RESUMED);
+    }
+
+    @Override
+    protected void onPause() {
+        lifecycleRegistry.markState(Lifecycle.State.STARTED);
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        lifecycleRegistry.markState(Lifecycle.State.CREATED);
+        super.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        lifecycleRegistry.markState(Lifecycle.State.DESTROYED);
+        super.onDestroy();
     }
 
     @NonNull
     @Override
     public Lifecycle getLifecycle() {
-        return mLifecycleRegistry;
+        return lifecycleRegistry;
     }
 }
