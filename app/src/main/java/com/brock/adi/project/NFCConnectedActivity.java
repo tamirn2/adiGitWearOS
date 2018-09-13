@@ -4,14 +4,13 @@ import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.wearable.activity.WearableActivity;
 
 public class NFCConnectedActivity extends MyWearableActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_idle);
+        setContentView(R.layout.activity_nfcconnected);
 
         FlowManager.instance.getCurrentState().observe(this, new Observer<State>() {
             @Override

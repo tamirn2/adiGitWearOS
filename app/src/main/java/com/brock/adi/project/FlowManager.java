@@ -25,7 +25,7 @@ public class FlowManager {
     private FlowManager(){
         String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
         dataStore.updateWorkoutTime(timeStamp);
-        currentState.postValue(State.IDLE);
+        //currentState.postValue(State.IDLE);
     }
 
     private void restartTimers(){

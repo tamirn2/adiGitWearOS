@@ -4,8 +4,6 @@ import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.wearable.activity.WearableActivity;
-import android.widget.TextView;
 
 public class IdleActivity extends MyWearableActivity {
 

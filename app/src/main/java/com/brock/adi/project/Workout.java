@@ -18,7 +18,7 @@ public class Workout {
 
 
     public String timeStamp = null;
-    public ArrayList<Exercise> workoutSummery = null;
+    public ArrayList<Exercise> workoutSummery = new ArrayList<>();
 
     public Exercise getLastExercise(){
         return workoutSummery.get(workoutSummery.size() - 1);

@@ -15,7 +15,7 @@ public class CountingActivity extends MyWearableActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_idle);
+        setContentView(R.layout.activity_counting);
 
 
         FlowManager.instance.getExerciseName().observe(this, new Observer<String>() {
