@@ -12,6 +12,7 @@ public class NFCConnectedActivity extends MyWearableActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfcconnected);
 
+        FlowManager.instance.updateCounter(5);
         FlowManager.instance.getCurrentState().observe(this, new Observer<State>() {
             @Override
             public void onChanged(@Nullable State state) {

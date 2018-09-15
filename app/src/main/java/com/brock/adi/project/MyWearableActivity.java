@@ -1,11 +1,11 @@
 package com.brock.adi.project;
 
 import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.LifecycleOwner;
 import android.arch.lifecycle.LifecycleRegistry;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.wearable.activity.WearableActivity;
-import android.arch.lifecycle.LifecycleOwner;
 
 public class MyWearableActivity extends WearableActivity implements LifecycleOwner {
 

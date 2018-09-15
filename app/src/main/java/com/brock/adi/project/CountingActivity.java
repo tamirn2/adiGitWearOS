@@ -8,15 +8,16 @@ import android.widget.TextView;
 
 public class CountingActivity extends MyWearableActivity {
 
-    TextView countText = (TextView)findViewById(R.id.countText);
-    TextView exerciseNameText = (TextView)findViewById(R.id.exerciseName);
+    TextView countText;
+    TextView exerciseNameText;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_counting);
-
+        countText = findViewById(R.id.countText);
+        exerciseNameText = findViewById(R.id.exerciseName);
 
         FlowManager.instance.getExerciseName().observe(this, new Observer<String>() {
             @Override
@@ -43,7 +44,7 @@ public class CountingActivity extends MyWearableActivity {
                     FlowManager.instance.getCounter().observe(CountingActivity.this, new Observer<Integer>() {
                         @Override
                         public void onChanged(@Nullable Integer count) {
-                            if (count != null ) countText.setText(count);
+                            if (count != null ) countText.setText(count.toString());
                             else{
                                 throw new RuntimeException("count is null");
                             }

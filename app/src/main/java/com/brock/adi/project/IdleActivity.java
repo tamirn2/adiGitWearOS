@@ -15,6 +15,7 @@ public class IdleActivity extends MyWearableActivity {
         // Enables Always-on
         setAmbientEnabled();
 
+        FlowManager.instance.updateNFCConnected("Weights");
         FlowManager.instance.getCurrentState().observe(this, new Observer<State>() {
             @Override
             public void onChanged(@Nullable State state) {
@@ -22,9 +23,6 @@ public class IdleActivity extends MyWearableActivity {
                     Intent nfcConnectedIntent = new Intent(IdleActivity.this, NFCConnectedActivity.class);
                     IdleActivity.this.startActivity(nfcConnectedIntent);
                     finish();
-                }
-                else{
-                    throw new RuntimeException("shouldn't get this state here " + state.name());
                 }
             }
         });

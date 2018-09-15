@@ -53,8 +53,8 @@ public class FlowManager {
     public void updateCounter(int count){
        restartTimers();
        dataStore.updateExerciseCount(count);
-        exerciseCounter.postValue(count);
-        goToNewState(State.COUNTING);
+       exerciseCounter.postValue(count);
+       goToNewState(State.COUNTING);
     }
 
     private synchronized void goToNewState(State newState){
