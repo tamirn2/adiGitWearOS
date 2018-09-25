@@ -2,10 +2,11 @@ package com.brock.adi.project;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
-import android.icu.text.SimpleDateFormat;
 import android.os.CountDownTimer;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class FlowManager {
 
@@ -23,9 +24,9 @@ public class FlowManager {
     public static final FlowManager instance = new FlowManager();
 
     private FlowManager(){
-        String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.getDefault()).format(new Date());
         dataStore.updateWorkoutTime(timeStamp);
-        //currentState.postValue(State.IDLE);
+        currentState.postValue(State.IDLE);
     }
 
     private void restartTimers(){
@@ -42,12 +43,18 @@ public class FlowManager {
             }
         };
     }
+
     public void updateNFCConnected(String name){
         restartTimers();
         dataStore.addExerciseToWorkout(name);
         exerciseName.postValue(name);
         exerciseCounter.postValue(0);
         goToNewState(State.NFC_CONNECTED);
+    }
+
+    public void backToMenu(){
+        if (timerUntilIdle != null) { timerUntilIdle.cancel();}
+        goToNewState(State.IDLE);
     }
 
     public void updateCounter(int count){

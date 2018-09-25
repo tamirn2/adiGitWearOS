@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 public class NFCConnectedActivity extends MyWearableActivity {
 
@@ -12,7 +13,13 @@ public class NFCConnectedActivity extends MyWearableActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nfcconnected);
 
-        FlowManager.instance.updateCounter(5);
+        findViewById(R.id.back_to_menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FlowManager.instance.backToMenu();
+            }
+        });
+
         FlowManager.instance.getCurrentState().observe(this, new Observer<State>() {
             @Override
             public void onChanged(@Nullable State state) {

@@ -4,7 +4,10 @@ import android.arch.lifecycle.Observer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.widget.TextView;
+
+import java.util.Locale;
 
 public class CountingActivity extends MyWearableActivity {
 
@@ -26,6 +29,12 @@ public class CountingActivity extends MyWearableActivity {
             }
         });
 
+        findViewById(R.id.menu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FlowManager.instance.backToMenu();
+            }
+        });
 
         FlowManager.instance.getCurrentState().observe(this, new Observer<State>() {
             @Override
@@ -44,7 +53,7 @@ public class CountingActivity extends MyWearableActivity {
                     FlowManager.instance.getCounter().observe(CountingActivity.this, new Observer<Integer>() {
                         @Override
                         public void onChanged(@Nullable Integer count) {
-                            if (count != null ) countText.setText(count.toString());
+                            if (count != null ) countText.setText(String.format(Locale.getDefault(), "%d", count));
                             else{
                                 throw new RuntimeException("count is null");
                             }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <style name="AppTheme" parent="android:Theme.DeviceDefault">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+    </style>
+
+</resources>
+
+<!--<style name="Theme.Nav" parent="@android:style/Theme.DeviceDefault">-->
+<!--&lt;!&ndash; your app branding color for the app bar &ndash;&gt;-->
+<!--<item name="android:colorPrimary">@color/primary</item>-->
+<!--&lt;!&ndash; darker variant for the status bar and contextual app bars &ndash;&gt;-->
+<!--<item name="android:colorPrimaryDark">@color/primary_dark</item>-->
+<!--&lt;!&ndash; theme UI controls like checkboxes and text fields &ndash;&gt;-->
+<!--<item name="android:colorAccent">@color/accent</item>-->
+<!--<item name="android:colorForeground">@color/primary</item>-->
+<!--<item name="android:colorBackground">@color/Viewport_Background</item>-->
+<!--</style>-->
