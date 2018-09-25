@@ -3,6 +3,7 @@ package com.brock.adi.project;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.os.CountDownTimer;
+import android.util.Log;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,8 +11,8 @@ import java.util.Locale;
 
 public class FlowManager {
 
-    private static final long COUNTDOWN_TO_IDLE_MILLIS = 120000;
-    private static final long COUNTDOWN_INTERVALS = 12000;
+    private static final long COUNTDOWN_TO_IDLE_MILLIS = 30_000;
+    private static final long COUNTDOWN_INTERVALS = 3000;
     private CountDownTimer timerUntilIdle = null;
 
     private MutableLiveData<State> currentState = new MutableLiveData<>();
@@ -29,23 +30,26 @@ public class FlowManager {
         currentState.postValue(State.IDLE);
     }
 
-    private void restartTimers(){
+    private void restartTimer(){
         if (timerUntilIdle != null) timerUntilIdle.cancel();
         timerUntilIdle = null;
 
         timerUntilIdle = new CountDownTimer(COUNTDOWN_TO_IDLE_MILLIS, COUNTDOWN_INTERVALS) {
             @Override
-            public void onTick(long millisUntilFinished) { }
+            public void onTick(long millisUntilFinished) {
+            }
 
             @Override
             public void onFinish() {
+                Log.d("timer", "finished");
                 goToNewState(State.IDLE);
             }
         };
+        timerUntilIdle.start();
     }
 
     public void updateNFCConnected(String name){
-        restartTimers();
+        restartTimer();
         dataStore.addExerciseToWorkout(name);
         exerciseName.postValue(name);
         exerciseCounter.postValue(0);
@@ -58,7 +62,7 @@ public class FlowManager {
     }
 
     public void updateCounter(int count){
-       restartTimers();
+       restartTimer();
        dataStore.updateExerciseCount(count);
        exerciseCounter.postValue(count);
        goToNewState(State.COUNTING);
