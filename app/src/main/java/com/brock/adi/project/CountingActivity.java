@@ -53,6 +53,7 @@ public class CountingActivity extends MyWearableActivity {
                     FlowManager.instance.getCounter().observe(CountingActivity.this, new Observer<Integer>() {
                         @Override
                         public void onChanged(@Nullable Integer count) {
+//                            count = 4;
                             if (count != null ) countText.setText(String.format(Locale.getDefault(), "%d", count));
                             else{
                                 throw new RuntimeException("count is null");
