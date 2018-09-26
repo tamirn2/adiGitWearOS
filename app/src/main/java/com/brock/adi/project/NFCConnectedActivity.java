@@ -1,6 +1,7 @@
 package com.brock.adi.project;
 
 import android.arch.lifecycle.Observer;
+import android.content.Context;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -14,7 +15,8 @@ import android.widget.TextView;
 import static java.lang.Math.abs;
 
 public class NFCConnectedActivity extends MyWearableActivity implements SensorEventListener {
-
+    private SensorManager mSensorManager;
+    private Sensor mSensor;
     private float[] samples_x = new float[50];
     private float[] samples_y = new float[50];
     private float[] samples_z = new float[50];
@@ -25,6 +27,7 @@ public class NFCConnectedActivity extends MyWearableActivity implements SensorEv
     private float convolution_value_z = 0;
     private float convolution_Detect = 500;
     private int last_detection = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,9 @@ public class NFCConnectedActivity extends MyWearableActivity implements SensorEv
                 FlowManager.instance.backToMenu();
             }
         });
+        mSensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
+        mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        mSensorManager.registerListener(this, mSensor, SensorManager.SENSOR_DELAY_NORMAL);
 
         FlowManager.instance.getCurrentState().observe(this, new Observer<State>() {
             @Override
@@ -99,6 +105,7 @@ public class NFCConnectedActivity extends MyWearableActivity implements SensorEv
             {
                 last_detection = 1;
                 FlowManager.instance.updateCounter(1);
+
             }
         }
 
